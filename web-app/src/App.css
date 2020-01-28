@@ -1,0 +1,111 @@
+.App {
+  background-color: cadetblue;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  text-align: center;
+}
+
+.App-logo {
+  height: 4vmin;
+  pointer-events: none;
+  left: 15px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  min-height: 15vh;
+  flex-shrink: 0;
+  display: grid;
+  grid-gap: 1px;
+}
+
+#title{
+  grid-row: 4;
+  font-size: 20pt;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.nav-menu { 
+  grid-row: 1;
+} 
+
+.App-footer {
+  flex-shrink: 0;
+  font-style: italic;
+  text-align: center;
+  bottom:0;
+  position: fixed;
+  width: 100%;
+  background-color: cadetblue;
+}
+.App-link {
+  color: #61dafb;
+}
+
+.bodyContent {
+  flex-grow: 1;
+  height: 100%;
+}
+
+#content {
+  background-color: dimgray;
+  flex-grow: 1;
+  overflow: auto;
+  min-height: 2em;
+}
+
+.button {
+  padding: 1px;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#grid-container-catalog{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 10px;
+}
+
+#grid-container-cart{
+  align-content: center;
+  display: grid;
+  grid-template-rows: minmax(10px,20px);
+  width: auto;
+  fill: aquamarine;
+}
+
+.grid-item{
+  padding: 10px;
+  align-items: center;
+}
+
+.grid-item-checkout{
+    align-items: center;
+    margin-top: 25px;
+    margin-left: 150px;
+    width: 75%;
+    background-color: gray;
+}
+
+#about{
+  margin-top: 400px;
+  margin-bottom: 700px;
+  align-content: center;
+  text-align: center;
+  font-size: larger;
+}

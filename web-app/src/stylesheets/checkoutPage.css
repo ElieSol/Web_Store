@@ -1,0 +1,17 @@
+#price{
+    text-align: center;
+    font-size: larger;
+    font-weight: bold;
+}
+
+#no-display{
+    margin-top: 400px;
+    align-content: center;
+    text-align: center;
+    font-size: larger;
+}
+
+.grid-item-checkout{
+    background-color: gray;
+    padding: 10px;
+}
