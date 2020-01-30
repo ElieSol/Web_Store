@@ -1,3 +1,11 @@
+/*
+Author: Julie Solacroup
+Last modified: 30/01/19
+
+    Script containing the Objects (JSON) used in the web app
+
+*/
+
 function Item(image, name, reference, description, price) {
     this.image = image;
     this.name = name;
@@ -25,9 +33,12 @@ function Basket(listOfItems, totalPrice, owner) {
         this.listOfItems.push(item);
     }
 
-    this.deleteItem = function(item){
-        var index = this.listOfItems.indexOf(item);
-        this.listOfItems.splice(index,1);
+    this.getItemFromReference = function(ref){
+        for(let i = 0; i < listOfItems.length ; i++){
+            if(listOfItems[i].reference==ref){
+                return listOfItems[i];
+            }
+        }
     }
 
     this.getTotalPrice = function(){
@@ -50,7 +61,7 @@ function Basket(listOfItems, totalPrice, owner) {
         var listOfQuantity = {};
         for(let i = 0; i < listOfItems.length ; i++){
             var item = listOfItems[i].reference;
-            if(!item in listOfQuantity){
+            if(!(item in listOfQuantity)){
                 listOfQuantity[item] = 1;
             }
             else{
@@ -77,7 +88,27 @@ function StoreInventory(inventoryList) {
         var index = this.inventoryList.indexOf(item);
         this.inventoryList.splice(index,1);
     }
+
+    this.getQuantityOfEachItems = function (){
+        var listOfQuantity = {};
+        for(let i = 0; i < inventoryList.length ; i++){
+            var item = inventoryList[i].reference;
+            if(!(item in listOfQuantity)){
+                listOfQuantity[item] = 1;
+            }
+            else{
+                listOfQuantity[item] += 1;
+            }
+        }
+        return listOfQuantity;
+    }
 }
+
+/*
+
+Declaration of the mock data
+
+*/
 
 let itemA = new Item('/Computer.jpg',"Computer Screen", "CSX1231", "Curved Computer Monitor with OLED Display of 20 inches.", 150);
 let itemB = new Item('/Unit.jpg', "Computer Unit", "CSX1232", "Computer Unit Quadricore composed of the latest processor Intel I9", 250);

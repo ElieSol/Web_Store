@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { shallow } from 'enzyme';
+import renderer from 'react-test-renderer';
+import { shallow, mount } from 'enzyme';
 import { expect } from 'chai';
 
 import App from './App';
@@ -13,18 +14,15 @@ it('renders without crashing', () => {
   ReactDOM.unmountComponentAtNode(div);
 });
 
-describe('App component', () => {
-  it('renders an `.App-logo`', () => {
-    const wrapper = shallow(<App />);
-    expect(wrapper.find('App-logo')).to.have.lengthOf(1);
-  });
-
   it('renders four <NavItem/> components', () => {
     const wrapper = shallow(<App />);
     const nbItem = wrapper.find(NavItem);
     expect(nbItem).to.have.lengthOf(4);
   });
-});
+
+
+
+
 
 /*
 Test to implement:
@@ -34,8 +32,4 @@ Test to implement:
   - Selected items well added to cart
   - Removed items, well removed
   - Total price well computed
-- Events
-  - Check onClick events triggers good methods
-  
-
 */

@@ -6,7 +6,7 @@ import { Table, TabContent, TabPane, Navbar, Nav, NavItem, NavLink, Card, Button
     CardSubtitle, CardBody, Row, Col } from 'reactstrap';
 import classnames from 'classnames';
 
-import {displayItems} from './pages/catalogPage';
+import {CatalogPage} from './pages/CatalogPage';
 import {CheckoutPage} from './pages/CheckoutPage';
 
 import {mockInventory, Basket} from './Objects';
@@ -46,11 +46,11 @@ class App extends Component {
       var reinitialization = this.reinitialization;
 
       return ( 
-      <div class = "App" >
-        <header class = "App-header" >
+      <div className = "App" >
+        <header className = "App-header" >
 
         <div id="title">
-        <img src = { logo } class = "App-logo" alt = "logo" />
+        <img src = { logo } className = "App-logo" alt = "logo" />
         <p> Cyber Store </p> 
         </div>
         
@@ -85,7 +85,7 @@ class App extends Component {
         </div>
         </header>
 
-        <body class="bodyContent">
+        <div id="bodyContent">
         <TabContent activeTab={this.state.activeTab} className="content">
             <TabPane tabId="1">
               <div id="about">
@@ -98,14 +98,18 @@ class App extends Component {
 
         <TabContent activeTab={this.state.activeTab} className="content">
             <TabPane tabId="2">
-            <div id="grid-container-catalog">{displayItems(mockInventory.inventoryList, this.state.cart)}</div>
+              <div >
+                <CatalogPage cart = {this.state.cart} inventory = {mockInventory.inventoryList}/>
+              </div>
             </TabPane>
         </TabContent>
 
 
         <TabContent activeTab={this.state.activeTab} className="content">
             <TabPane tabId="3">
-            <div id="grid-container-cart"><CheckoutPage cart={this.state.cart} reinitialization = {reinitialization.bind(this)}/></div>
+              <div id="grid-container-cart">
+                <CheckoutPage cart={this.state.cart} reinitialization = {reinitialization.bind(this)}/>
+              </div>
             </TabPane>
         </TabContent>
 
@@ -115,7 +119,7 @@ class App extends Component {
 
         
 
-        </body>
+        </div>
 
         <footer className="App-footer">
          <p>Application powered by <code>ReactJS</code></p>

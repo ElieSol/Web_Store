@@ -1,3 +1,12 @@
+/*
+Author: Julie Solacroup
+Last modified: 30/01/19
+
+    Script containing the implementation of the CheckoutPage component of the web app
+    It allows the display of the selected items and the checkout/simulation of payment.
+
+*/
+
 import React, { useState } from 'react';
 import '../stylesheets/checkoutPage.css';
 
@@ -14,6 +23,8 @@ export class CheckoutPage extends React.Component{
             checkout: false,
             modal: false
         }
+
+        this.deleteItemFromCart = this.deleteItemFromCart.bind(this);
     }
 
     componentWillReceiveProps(props){
@@ -24,6 +35,7 @@ export class CheckoutPage extends React.Component{
 
     displayCartContent(cart){
         var element = [];
+
         var cartItemList = cart.listOfItems;
 
         for(let i = 0; i < cartItemList.length ; i++){
@@ -37,19 +49,20 @@ export class CheckoutPage extends React.Component{
                         <Row>{item.name}</Row>
                         <Row>Price: {item.price} €<br/>
                             Reference: {item.reference}</Row>
-                        <Row>Quantity: </Row>
-                        <Row><Button onClick={() => this.deleteItemFromCart(cart, item)}>Remove</Button></Row>
+                        {/*<Row>Quantity: </Row>*/}
+                        <Row><Button onClick={() => this.deleteItemFromCart(i)}>Remove</Button></Row>
                     </Col>
                 </Row>
                 </div>
             )            
         }
-
+        
         return element;
     }
 
-    deleteItemFromCart(cart, item){
-        cart.deleteItem(item)
+    deleteItemFromCart(idx){
+        const cart = this.state.cart;
+        cart.listOfItems.splice(idx,1);
         this.setState({
             cart: cart,
             price: cart.getTotalPrice()
@@ -73,7 +86,7 @@ export class CheckoutPage extends React.Component{
                 <Modal isOpen={this.state.modal} toggle={()=>this.toggle()}>
                     <ModalHeader toggle={() => this.toggle()}>Checkout</ModalHeader>
                     <ModalBody>
-                        Are you sure you want to pursuie with your checkout ?
+                        Are you sure you want to pursue with your checkout ?
                     </ModalBody>
                     <ModalFooter>
                         <Button color="primary" onClick={()=>{reinitialization(); this.toggle()}}>Yes</Button>{' '}

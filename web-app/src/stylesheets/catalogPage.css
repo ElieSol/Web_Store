@@ -3,3 +3,13 @@
     font-weight: bold;
 }
 
+#grid-container-catalog{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 10px;
+}
+
+.grid-item{
+  padding: 10px;
+  align-items: center;
+}
