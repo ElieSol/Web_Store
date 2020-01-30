@@ -10,6 +10,19 @@ Autre modules/libraires utilisées:
 - enzyme (test)
 - chai (test)
 
+..* Commandes d'installation de chaque module librairies
+
+``bash
+npm install --save bootstrap
+npm install --save reactstrap react react-dom
+
+npm install --save-dev enzyme enzyme-adapter-react-16 react-test-renderer chai-enzyme@beta
+
+npm install --save-dev dirty-chai
+npm install --save-dev chai-jest-diff
+``
+
+
 ### 2. Commandes
 
 ..* Installation des modules et packages nécessaires
