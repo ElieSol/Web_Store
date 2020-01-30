@@ -62,12 +62,12 @@
   padding: 1px;
 }
 
-#about{
-  margin-top: 400px;
-  margin-bottom: 700px;
+#about,#help{
+  margin-top: 250px;
+  margin-bottom: 500px;
   align-content: center;
   text-align: center;
-  font-size: larger;
+  font-size: 20pt;
 }
 
 #grid-container-catalog{

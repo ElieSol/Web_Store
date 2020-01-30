@@ -20,6 +20,7 @@ class App extends Component {
       this.state = {
         activeTab: "1", 
         cart: new Basket([],0,"Bob"),
+        inventory: mockInventory.inventoryList,
         reinitCart: false
       }
 
@@ -76,7 +77,8 @@ class App extends Component {
             </NavLink>
           </NavItem>
           <NavItem>
-           <NavLink>
+           <NavLink className={classnames({ active: this.state.activeTab === '4' })}
+            onClick={() => { this.toggle('4');}}>
               Help
             </NavLink>
           </NavItem>
@@ -99,7 +101,7 @@ class App extends Component {
         <TabContent activeTab={this.state.activeTab} className="content">
             <TabPane tabId="2">
               <div >
-                <CatalogPage cart = {this.state.cart} inventory = {mockInventory.inventoryList}/>
+                <CatalogPage cart = {this.state.cart} inventory = {this.state.inventory}/>
               </div>
             </TabPane>
         </TabContent>
@@ -113,7 +115,12 @@ class App extends Component {
             </TabPane>
         </TabContent>
 
-        <TabContent>
+        <TabContent activeTab={this.state.activeTab} className="content">
+            <TabPane tabId="4">
+              <div id="help">
+                Please refer to the <a href="https://github.com/ElieSol/Web_Store">github page of the project</a> for more information          
+              </div>
+            </TabPane>
 
         </TabContent>
 

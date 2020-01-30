@@ -62,6 +62,8 @@ export class CheckoutPage extends React.Component{
 
     deleteItemFromCart(idx){
         const cart = this.state.cart;
+        var item = cart.listOfItems[idx];
+        item.deletedFromCart();
         cart.listOfItems.splice(idx,1);
         this.setState({
             cart: cart,
@@ -82,7 +84,7 @@ export class CheckoutPage extends React.Component{
                 {this.state.cart.getTotalNumberOfItem()!=0 ? this.displayCartContent(this.state.cart) : <p id="no-display">Nothing in the cart to display.</p>}
                 <p id="price">Total Price : {this.state.cart.getTotalPrice()} €</p>
                 <p className="text-center">Number of Items : {this.state.cart.getTotalNumberOfItem()} </p>
-                <div className="text-center">{this.state.cart.getTotalNumberOfItem()!=0 ? (<Button onClick={() => this.toggle()} id="checkout-button">Proceed to Checkout</Button>): <Button id="checkout-button" disabled>Proceed to Checkout</Button>}</div>
+                <div className="text-center" id="checkout-button">{this.state.cart.getTotalNumberOfItem()!=0 ? (<Button onClick={() => this.toggle()} id="checkout-button">Proceed to Checkout</Button>): <Button id="checkout-button" disabled>Proceed to Checkout</Button>}</div>
                 <Modal isOpen={this.state.modal} toggle={()=>this.toggle()}>
                     <ModalHeader toggle={() => this.toggle()}>Checkout</ModalHeader>
                     <ModalBody>

@@ -21,11 +21,17 @@ export class CatalogPage extends React.Component{
         this.state = {
             cart: this.props.cart,
             inventory: this.props.inventory,
+            update: false
         }
     }
 
     addItemToCart(cart, item){
+        const update = this.state.update;
+        item.addedToCart();
         cart.addItem(item);
+        this.setState({
+            update: !update
+      })
     }
 
     displayItems(inventory, cart){
@@ -45,8 +51,10 @@ export class CatalogPage extends React.Component{
                         {inventory[i].description}
                         <br/>
                         Reference: {inventory[i].reference}
+                        <br/>
+                        Stock: {inventory[i].quantityStore}
                     </CardText>
-                    <Button onClick={() => this.addItemToCart(cart, inventory[i])}>Add to Cart</Button>
+                    {inventory[i].quantityStore!=0 ? (<Button onClick={() => this.addItemToCart(cart, inventory[i])}>Add to Cart</Button>): <Button disabled>Soldout</Button>}
                 </CardBody>
             </Card>
             </div>

@@ -5,10 +5,14 @@
 }
 
 #no-display{
-    margin-top: 400px;
+    margin-top: 200px;
     align-content: center;
     text-align: center;
     font-size: larger;
+}
+
+#checkout-button{
+    margin-bottom: 25px;
 }
 
 .grid-item-checkout{
